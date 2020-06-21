@@ -6,7 +6,7 @@ phases:
       - npm install
   build:
     commands:
-      - npm run test
+      - CI=true npm run test
       - npm run build
 artifacts:
   files:
