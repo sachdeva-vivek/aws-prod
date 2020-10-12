@@ -8,7 +8,7 @@ phases:
     commands:
       - CI=true npm run test
       - npm run build
-      - sls package
+      - serverless package
       - echo "serverless pacakge done" 
       - cd .serverless
       - pwd
