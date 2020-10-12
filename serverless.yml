@@ -1,0 +1,36 @@
+service: frontend-experiment
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: prod
+  environment:
+    ENV: "local"
+
+package:
+  include:
+    - src/**/*.js
+functions:
+  graphql:
+    handler: graphql.graphqlHandler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true
+  mutation:
+    handler: internalGraphql.graphqlHandler
+    events:
+      - http:
+          path: /internal/graphql
+          method: post
+          cors: true
+      - http:
+          path: /internal/graphql
+          method: get
+          cors: true
+plugins:
+  - serverless-offline

@@ -8,6 +8,12 @@ phases:
     commands:
       - CI=true npm run test
       - npm run build
+      - sls package
+      - echo "serverless pacakge done" 
+      - cd .serverless
+      - pwd
+      - aws s3 cp frontend-experiment.zip s3://frontend-experiment/
+    
 artifacts:
   files:
     - '**/*'
